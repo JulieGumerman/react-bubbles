@@ -52,7 +52,7 @@ const BubblePage = () => {
 
 
   return (
-    <>
+    <div className="container">
       <ColorList 
         deleteColor={deleteColor} 
         colors={colorList} 
@@ -61,7 +61,7 @@ const BubblePage = () => {
       />
       <Bubbles colors={colorList} />
       <NewColorForm newColors={newColors}/>
-    </>
+    </div>
   );
 };
 

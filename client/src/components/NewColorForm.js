@@ -14,14 +14,18 @@ const NewColorForm = ({ newColors }) => {
     }
 
     return (
-        <>
+        <div className="add-color">
         <h3>Add new colors.</h3>
         <form onSubmit={e => newColors(e, newColorName, newColorHex)}>
-            <input type="text" placeholder="name" value={newColorName} onChange={e => handleColor(e)}/>
-            <input type="text" placeholder="hex code" value={newColorHex} onChange={e => handleHex(e)}/>
-            <button></button>
+            <label>Name: 
+                <input type="text" placeholder="name" value={newColorName} onChange={e => handleColor(e)}/>
+            </label>
+            <label>Hex code: 
+                <input type="text" placeholder="hex code" value={newColorHex} onChange={e => handleHex(e)}/>
+            </label>
+            <button className="add-submit">Submit your color!</button>
         </form>
-        </>
+        </div>
     );
 }
 
