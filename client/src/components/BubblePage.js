@@ -20,9 +20,36 @@ const BubblePage = () => {
       accessColors();
   }, []);
 
+
+    const deleteColor = (color) => {
+    // make a delete request to delete this color
+    axiosWithAuth().delete(`/colors/${color.id}`)
+      .then(res => {
+        console.log(res);
+        accessColors();
+      })
+      .catch(err => console.log(err));
+
+  };
+
+  // const saveEdit = e => {
+  //   e.preventDefault();
+  //   // Make a put request to save your updated color
+  //   // think about where will you get the id from...
+  //   // where is is saved right now?
+
+  // };
+
+
+
   return (
     <>
-      <ColorList colors={colorList} updateColors={setColorList} />
+      <ColorList 
+        deleteColor={deleteColor} 
+        colors={colorList} 
+        updateColors={setColorList} 
+        // saveEdit={saveEdit}
+      />
       <Bubbles colors={colorList} />
     </>
   );

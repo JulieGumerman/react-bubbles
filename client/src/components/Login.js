@@ -14,14 +14,10 @@ const Login = props => {
     axiosWithAuth()
       .post("/login", state.credentials)
       .then(res => {
-        console.log(res.data.payload);
         localStorage.setItem("token", res.data.payload);
-        console.log(state.credentials);
-
         props.history.push("/bubbles");
-
       })
-
+      .catch(err => console.log(err));
 
   }
 
