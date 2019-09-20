@@ -45,7 +45,6 @@ const BubblePage = () => {
     axiosWithAuth().post("/colors", {code: {hex: hex}, color: name})
       .then(res => {
         accessColors();
-        console.log("res", res)
       })
       .catch(err => console.log(err));
   }

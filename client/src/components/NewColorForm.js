@@ -7,7 +7,6 @@ const NewColorForm = ({ newColors }) => {
 
     const handleHex = e => {
         setNewColorHex(e.target.value);
-        console.log(newColorHex);
     }
 
     const handleColor = e => {
