@@ -8,12 +8,13 @@ const Login = props => {
 
   const handleChange = event => {
     setState({credentials: {...state.credentials, [event.target.name]: event.target.value}});
-    console.log(state);
   }
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log("logged in!");
+    //do post request here!!!
+
+
   }
 
   return (
