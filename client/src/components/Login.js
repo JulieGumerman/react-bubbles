@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { axiosWithAuth} from "../utils/axiosWithAuth";
 
 const Login = props => {
   // make a post request to retrieve a token from the api
@@ -12,7 +13,16 @@ const Login = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    //do post request here!!!
+    axiosWithAuth()
+      .post("/login", state.credentials)
+      .then(res => {
+        console.log(res.data.payload);
+        localStorage.setItem("token", res.data.payload);
+        console.log(state.credentials);
+
+        //props.history.push("/bubbles");
+
+      })
 
 
   }
