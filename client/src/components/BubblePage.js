@@ -3,6 +3,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
+import NewColorForm from "./NewColorForm";
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
@@ -39,6 +40,15 @@ const BubblePage = () => {
       .catch(err => console.log(err))
   };
 
+  const newColors = (e, name, hex) => {
+    e.preventDefault();
+    axiosWithAuth().post("/colors", {code: {hex: hex}, color: name})
+      .then(res => {
+        accessColors();
+        console.log("res", res)
+      })
+      .catch(err => console.log(err));
+  }
 
 
 
@@ -51,6 +61,7 @@ const BubblePage = () => {
         saveEdit={saveEdit}
       />
       <Bubbles colors={colorList} />
+      <NewColorForm newColors={newColors}/>
     </>
   );
 };
