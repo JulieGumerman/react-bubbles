@@ -8,7 +8,7 @@ const initialColor = {
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors, accessColors, deleteColor }) => {
+const ColorList = ({ colors, updateColors, accessColors, deleteColor, saveEdit }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
@@ -18,15 +18,15 @@ const ColorList = ({ colors, updateColors, accessColors, deleteColor }) => {
     setColorToEdit(color);
   };
 
-  const saveEdit = (e) => {
-    e.preventDefault();
-    // Make a put request to save your updated color
-    // think about where will you get the id from...
-    // where is is saved right now?
-    // axiosWithAuth().put(`/colors/${color.id}`)
-    //   .then(res => accessColors())
-    //   .catch(err => console.log(err))
-  };
+  // const saveEdit = (e) => {
+  //   e.preventDefault();
+  //   // Make a put request to save your updated color
+  //   // think about where will you get the id from...
+  //   // where is is saved right now?
+  //   // axiosWithAuth().put(`/colors/${color.id}`)
+  //   //   .then(res => accessColors())
+  //   //   .catch(err => console.log(err))
+  // };
 
 
 
@@ -50,7 +50,7 @@ const ColorList = ({ colors, updateColors, accessColors, deleteColor }) => {
         ))}
       </ul>
       {editing && (
-        <form onSubmit={saveEdit}>
+        <form onSubmit={(e) => saveEdit(e, colorToEdit)}>
           <legend>edit color</legend>
           <label>
             color name:
